@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restorant's Menu</title>
+    <link rel="stylesheet" href="menu.css">
+    <link rel="stylesheet" href="nav.css">
+    <link rel="stylesheet" href="footer.css">
+</head>
+<body>
+    <div id="pop-up-container">
+        <div id="pop-up"></div>
+    </div>
+    <div id="nav"></div>
+    <div class="container">
+        <div class="menu-container">
+            <h1 id="menu-title"></h1>
+            <div class="menu-grid" id="menu">
+                <!-- Menu items will be displayed here -->
+            </div>
+
+            <div class="cart">
+                <h2>Your Cart</h2>
+                <div id="cart-items">
+                    <!-- Cart items will appear here -->
+                </div>
+                <div class="cart-total">
+                    <p>Total: <span id="total-price">0.00</span></p>
+                    <button id="confirm-order">Confirm Order</button>
+                </div>
+            </div>
+        </div>
+        <div id="footer"></div>
+    </div>
+    <script src="footer.js"></script>
+    <script src="nav.js"></script>
+    <script src="menu.js" type="module"></script>
+</body>
+</html>

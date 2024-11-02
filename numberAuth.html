@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Authentification par téléphone - Firebase</title>
+
+    <!-- Importation des scripts Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/10.0.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.0.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/ui/6.1.0/firebase-ui-auth.js"></script>
+    <link
+        type="text/css"
+        rel="stylesheet"
+        href="https://www.gstatic.com/firebasejs/ui/6.1.0/firebase-ui-auth.css"
+    />
+
+    <script type="text/javascript">
+        // Votre configuration Firebase
+        const firebaseConfig = {
+            apiKey: "AIzaSyBIwOxG_ef7A2Xip8AsWUZ8IoZV8VBpLvM",
+            authDomain: "lunchproapp.firebaseapp.com",
+            projectId: "lunchproapp",
+            storageBucket: "lunchproapp.appspot.com",
+            messagingSenderId: "152392983898",
+            appId: "1:152392983898:web:d2226b907876e786ffbf63",
+            measurementId: "G-SH04LLPWGP",
+        };
+
+        // Initialisation de Firebase
+        firebase.initializeApp(firebaseConfig);
+
+        // Configuration de FirebaseUI pour l'authentification par téléphone
+        const uiConfig = {
+            signInSuccessUrl: "./index.html", // Redirection après connexion réussie
+            signInOptions: [
+            firebase.auth.PhoneAuthProvider.PROVIDER_ID, // Auth par téléphone
+            ],
+            callbacks: {
+                signInSuccessWithAuthResult: (authResult) => {
+                    localStorage.setItem('is_sign_in', 'true');
+                    return true; // or false to prevent automatic redirection
+                }
+            },
+            tosUrl: "/terms-of-service", // URL des termes de service
+            privacyPolicyUrl: "/privacy-policy", // URL de la politique de confidentialité
+            
+        };
+
+        // Initialisation du widget FirebaseUI
+        const ui = new firebaseui.auth.AuthUI(firebase.auth());
+
+        // Démarrage de FirebaseUI une fois le DOM chargé
+        window.onload = function () {
+            ui.start("#firebaseui-auth-container", uiConfig);
+        };
+    </script>
+</head>
+<body>
+    <h1>Connexion avec numéro de téléphone</h1>
+    <!-- Conteneur où FirebaseUI affichera l'interface -->
+    <div id="firebaseui-auth-container"></div>
+</body>
+</html>
